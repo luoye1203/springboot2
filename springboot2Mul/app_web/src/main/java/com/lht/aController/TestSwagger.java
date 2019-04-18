@@ -39,7 +39,7 @@ public class TestSwagger {
         try {
             logger.info("测试成功");
             logger.info(env.getProperty("catalina.home"));
-//            logger.info(mybatisService.getLog().toString());
+            logger.info(mybatisService.getDic().toString());
 
         } catch (Exception e) {
             logger.error("发送kafka失败",e);

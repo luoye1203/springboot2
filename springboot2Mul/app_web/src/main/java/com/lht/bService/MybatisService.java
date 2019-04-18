@@ -17,4 +17,8 @@ public class MybatisService {
 
         return mybatisDao.getLog();
     }
+
+    public List<Map<String,String>> getDic(){
+        return mybatisDao.getDic();
+    }
 }

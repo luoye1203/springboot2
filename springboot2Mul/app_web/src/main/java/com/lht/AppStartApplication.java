@@ -15,16 +15,18 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(exclude={HibernateJpaAutoConfiguration.class, DataSourceAutoConfiguration.class})
-@Import(DynamicDataSourceRegister.class)
+//@Import(DynamicDataSourceRegister.class)
 @EnableSwagger2
 @EnableScheduling
 @MapperScan("com.lht.cDao")
 public class AppStartApplication extends SpringBootServletInitializer {
 
-    @Bean
-    public DynamicDataSourceAnnotationAdvisor dynamicDatasourceAnnotationAdvisor() {
-        return new DynamicDataSourceAnnotationAdvisor(new DynamicDataSourceAnnotationInterceptor());
-    }
+
+
+//    @Bean
+//    public DynamicDataSourceAnnotationAdvisor dynamicDatasourceAnnotationAdvisor() {
+//        return new DynamicDataSourceAnnotationAdvisor(new DynamicDataSourceAnnotationInterceptor());
+//    }
 
 
     public static void main(String[] args) {

@@ -18,6 +18,7 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
@@ -30,6 +31,8 @@ import java.util.Map;
  * 实现 ImportBeanDefinitionRegistrar 实现数据源注册
  * 实现 EnvironmentAware 用于读取application.yml配置
  */
+//必须使用import因为导入的顺序import优先
+//@Component
 public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar, EnvironmentAware {
 
     private static final Logger logger = LoggerFactory.getLogger(DynamicDataSourceRegister.class);
@@ -70,7 +73,7 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
      * @param beanDefinitionRegistry
      */
     @Override
-    public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
+public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
         // 获取所有数据源配置
         Map config, defauleDataSourceProperties;
         defauleDataSourceProperties = binder.bind("spring.datasource.master", Map.class).get();

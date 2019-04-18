@@ -7,5 +7,10 @@
             select * from visitlog
     </select>
 
+    <select id="getDic" resultType="java.util.Map" >
+
+            select * from dic
+    </select>
+
 
 </mapper>
