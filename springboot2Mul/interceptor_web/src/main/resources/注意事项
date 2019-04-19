@@ -1,8 +1,0 @@
-1 @Import 通过导入的方式实现把实例加入springIOC容器中
-    注解需要知道可以注册三种
-    Configuration，
-    ImportSelector，
-    ImportBeanDefinitionRegistrar
-        实现 ImportBeanDefinitionRegistrar 接口的普通类 只能用import来注册，注意其实本身这个实现类并不是一个注册bean，而是重写
-        ImportBeanDefinitionRegistrar 的registerBeanDefinitions方法，方法内，注册了一些bean,这些bean只接受import注解注册
-
