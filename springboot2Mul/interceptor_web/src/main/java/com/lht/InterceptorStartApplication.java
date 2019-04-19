@@ -1,16 +1,11 @@
 package com.lht;
 
-import com.lht.eAop.DynamicDataSourceAnnotationAdvisor;
-import com.lht.eAop.DynamicDataSourceAnnotationInterceptor;
-import com.lht.register.DynamicDataSourceRegister;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -19,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableScheduling
 @MapperScan("com.lht.cDao")
-public class AppStartApplication extends SpringBootServletInitializer {
+public class InterceptorStartApplication extends SpringBootServletInitializer {
 
 
 
@@ -30,7 +25,7 @@ public class AppStartApplication extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(AppStartApplication.class, args);
+        SpringApplication.run(InterceptorStartApplication.class, args);
 
     }
 

@@ -1,8 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi
 
-/app_web/target/
 /app_config/target/
 /.idea/
 /app_config/app_config.iml
-/app_web/app_web.iml
 /springboot2Mul.iml
+/aop_web/aop_web.iml
+/interceptor_web/interceptor_web.iml

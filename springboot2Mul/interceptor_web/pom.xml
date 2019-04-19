@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>app_web</artifactId>
+    <artifactId>interceptor_web</artifactId>
     <packaging>war</packaging>
 
 
@@ -80,7 +80,7 @@
 
     <build>
 
-        <finalName>app_web</finalName>
+        <finalName>interceptor_web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

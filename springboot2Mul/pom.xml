@@ -10,7 +10,8 @@
     <version>1.0</version>
     <modules>
         <module>app_config</module>
-        <module>app_web</module>
+        <module>aop_web</module>
+        <module>interceptor_web</module>
     </modules>
 
     <parent>
