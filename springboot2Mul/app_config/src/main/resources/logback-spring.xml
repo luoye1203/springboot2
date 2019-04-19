@@ -6,8 +6,8 @@
             <property name="LOG_FILE" value="${catalina.home}/logs/run.log"/>
         </then>
         <else>
-            <property name="LOG_HOME" value="./app-web/target"/>
-            <property name="LOG_FILE" value="./app_web/target/logs"/>
+            <property name="LOG_HOME" value="./logs/"/>
+            <property name="LOG_FILE" value="./logs/run"/>
         </else>
     </if>
     <property name="APP_NAME" value="SPRING_TEST" />
