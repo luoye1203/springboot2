@@ -1,7 +1,7 @@
 spring:
   datasource:
     master:
-      url: jdbc:mysql://localhost:3306/lht_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+      url: jdbc:mysql://localhost:3306/lht_test1?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: 198412

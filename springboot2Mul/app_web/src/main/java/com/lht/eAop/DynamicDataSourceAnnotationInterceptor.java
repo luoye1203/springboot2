@@ -7,16 +7,19 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Auther: yukong
- * @Date: 2018/8/17 09:15
+ * @Auther: lht
+ * @Date: 2019-4-19 17:23:36
  * @Description:
  */
+//也可以bean注册
+//@Component
 public class DynamicDataSourceAnnotationInterceptor implements MethodInterceptor {
 
     private static final Logger logger = LoggerFactory.getLogger(DynamicDataSourceAnnotationInterceptor.class);
@@ -37,6 +40,7 @@ public class DynamicDataSourceAnnotationInterceptor implements MethodInterceptor
             DynamicDataSourceContextHolder.setDataSourceRouterKey(datasource);
             return invocation.proceed();
         } finally {
+            logger.info("去除数据源");
             DynamicDataSourceContextHolder.removeDataSourceRouterKey();
         }
     }

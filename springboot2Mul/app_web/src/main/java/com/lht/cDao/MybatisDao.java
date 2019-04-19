@@ -11,6 +11,6 @@ import java.util.Map;
 public interface MybatisDao {
     public List<Map<String,String>> getLog();
 
-    @DataSource("slave1")
+//    @DataSource("slave1")
     public List<Map<String,String>> getDic();
 }
