@@ -9,3 +9,4 @@
 aop_web/target/
 app_web/
 interceptor_web/target/
+logs/
