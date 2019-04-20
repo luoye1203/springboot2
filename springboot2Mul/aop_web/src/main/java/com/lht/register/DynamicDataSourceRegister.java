@@ -1,7 +1,5 @@
 package com.lht.register;
 
-import com.lht.config.dynamicDatasource.DynamicDataSourceContextHolder;
-import com.lht.config.dynamicDatasource.DynamicRoutingDataSource;
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +16,6 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;

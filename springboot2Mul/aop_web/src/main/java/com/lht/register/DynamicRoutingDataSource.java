@@ -1,4 +1,4 @@
-package com.lht.config.dynamicDatasource;
+package com.lht.register;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
