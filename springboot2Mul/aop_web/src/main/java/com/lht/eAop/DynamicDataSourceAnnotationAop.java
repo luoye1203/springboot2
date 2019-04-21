@@ -24,30 +24,12 @@ public class DynamicDataSourceAnnotationAop {
 
 
     //定义切点
-    @Pointcut("@within(com.lht.dAnnotation.DataSource)")
+//    @Pointcut("@within(com.lht.dAnnotation.DataSource)")
+    @Pointcut("execution(* com.lht.cDao..*.*(..))")
+//    @Pointcut("@target(com.lht.dAnnotation.DataSource)") //错误
     public void dynamicDataSourceCut() {
 
     }
-//    @Before("dynamicDataSourceCut()")
-//    public void deBefore(JoinPoint joinPoint) throws Throwable {
-//        try {
-//            String dynamicDataSourceKey = null;
-//            String classDskey = DynamicDataSourceAnnotationAop.getAnnotationDataSourceForClass(joinPoint);
-//            String methodDskey = DynamicDataSourceAnnotationAop.getAnnotationDataSourceForMethod(joinPoint);
-//            if (null != classDskey) {
-//                dynamicDataSourceKey = classDskey;
-//            }
-//            if (null != methodDskey) {
-//                dynamicDataSourceKey = methodDskey;
-//            }
-//            DynamicDataSourceContextHolder.setDataSourceRouterKey(dynamicDataSourceKey);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            DynamicDataSourceContextHolder.removeDataSourceRouterKey();
-//        }
-//
-//    }
 
 
     //环绕通知,环绕增强，相当于MethodInterceptor
