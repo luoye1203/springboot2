@@ -2,6 +2,7 @@ package com.lht.aController;
 
 
 import com.lht.bService.MybatisService;
+import com.lht.dAnnotation.VisitLog;
 import com.lht.model.BaseResponse;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api("测试swagger集成服务")
 @RequestMapping("/swagger/")
+@VisitLog
 public class TestSwagger {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

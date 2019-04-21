@@ -17,8 +17,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class DynamicDataSourceAnnotationAop {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
