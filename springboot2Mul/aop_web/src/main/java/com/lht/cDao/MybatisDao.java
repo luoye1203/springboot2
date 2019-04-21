@@ -10,6 +10,7 @@ import java.util.Map;
 @Repository
 @DataSource("slave2")
 public interface MybatisDao {
+    @DataSource("slave1")
     public List<Map<String,String>> getLog();
 
     @DataSource("slave1")

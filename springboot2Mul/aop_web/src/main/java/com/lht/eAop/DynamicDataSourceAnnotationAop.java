@@ -24,8 +24,9 @@ public class DynamicDataSourceAnnotationAop {
 
 
     //定义切点
-//    @Pointcut("@within(com.lht.dAnnotation.DataSource)")
-    @Pointcut("execution(* com.lht.cDao..*.*(..))")
+    @Pointcut("@within(com.lht.dAnnotation.DataSource)")
+//    @Pointcut("execution(* com.lht.cDao..*.*(..))")
+//    @Pointcut("execution(* com.lht.cDao..*.*(..)) && @target(com.lht.dAnnotation.DataSource)")
 //    @Pointcut("@target(com.lht.dAnnotation.DataSource)") //错误
     public void dynamicDataSourceCut() {
 
@@ -36,6 +37,12 @@ public class DynamicDataSourceAnnotationAop {
     @Around("dynamicDataSourceCut()")
     public Object arround(ProceedingJoinPoint pjp) {
         logger.info("方法环绕start.....");
+        //AOP代理类的信息
+        logger.info(pjp.getThis().toString());
+        //代理的目标对象
+        logger.info(pjp.getTarget().toString());
+
+
         try {
             String dynamicDataSourceKey = null;
             String classDskey = DynamicDataSourceAnnotationAop.getAnnotationDataSourceForClass(pjp);
