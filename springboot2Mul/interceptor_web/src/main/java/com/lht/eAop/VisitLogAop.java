@@ -44,11 +44,11 @@ public class VisitLogAop {
 //            logger.info("IP : " + request.getRemoteAddr());
 //            logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
 //            logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
-            String className= VisitLogAop.getAnnotationLogForClass(joinPoint);
-            String methodName=VisitLogAop.getAnnotationLogForMethod(joinPoint);
+            String className = VisitLogAop.getAnnotationLogForClass(joinPoint);
+            String methodName = VisitLogAop.getAnnotationLogForMethod(joinPoint);
 //            logger.info(className);
 //            logger.info(methodName);
-            VisitLogModel model=new VisitLogModel();
+            VisitLogModel model = new VisitLogModel();
             model.setMoudelName(className);
             model.setApiName(methodName);
             model.setIp(request.getRemoteAddr());
@@ -94,30 +94,32 @@ public class VisitLogAop {
 
     private static String getAnnotationLogForClass(JoinPoint joinPoint) throws Exception {
         Signature signature = joinPoint.getSignature();
-        Annotation annotation=signature.getDeclaringType().getAnnotation(VisitLog.class);
-        String className;
-        if(annotation==null){
-            className=signature.getDeclaringTypeName();
-            return className;
-        }else{
-            className=((VisitLog)annotation).value();
-            return className;
+        Annotation annotation = signature.getDeclaringType().getAnnotation(VisitLog.class);
+        String mudoleName = ((VisitLog) annotation).value();
+        if ("".endsWith(((VisitLog) annotation).value())) {
+            return signature.getDeclaringTypeName();
+        } else {
+            return mudoleName;
         }
     }
 
     private static String getAnnotationLogForMethod(JoinPoint joinPoint) throws Exception {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
-        Annotation annotation=methodSignature.getReturnType().getAnnotation(VisitLog.class);
         Method method = methodSignature.getMethod();
-        String methodName;
+        Annotation annotation = method.getAnnotation(VisitLog.class);
         if (annotation != null) {
-            return ((VisitLog)annotation).value();
-        }else{
+            String apiName = ((VisitLog) annotation).value();
+            if (!"".equals(apiName)) {
+                return apiName;
+            } else {
+                return method.getName();
+            }
+
+        } else {
             return method.getName();
         }
     }
-
 
 
 }

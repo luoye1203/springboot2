@@ -8,6 +8,7 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD, ElementType.TYPE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Inherited
 public @interface DataSource {
     String value() default "master"; //该值即key值
 }
