@@ -3,7 +3,8 @@ package com.lht.aController;
 
 import com.lht.bService.MybatisService;
 import com.lht.dAnnotation.VisitLog;
-import com.lht.model.BaseResponse;
+import com.lht.dModel.BaseResponse;
+import com.lht.fConfig.InterceptorConfig;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,9 @@ public class TestSwagger {
     private MybatisService mybatisService;
 
     @Autowired
+    private InterceptorConfig interceptorConfig;
+
+    @Autowired
     private Environment env;
 
     @RequestMapping(value = "/send", method = RequestMethod.GET)
@@ -43,6 +47,7 @@ public class TestSwagger {
             logger.info("测试成功");
             logger.info(env.getProperty("catalina.home"));
             logger.info(mybatisService.getDic().toString());
+            logger.info(interceptorConfig.getUrls().toString());
 
         } catch (Exception e) {
             logger.error("发送kafka失败",e);

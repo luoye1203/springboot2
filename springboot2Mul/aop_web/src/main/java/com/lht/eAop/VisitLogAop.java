@@ -3,7 +3,7 @@ package com.lht.eAop;
 
 import com.lht.bService.VisitLogService;
 import com.lht.dAnnotation.VisitLog;
-import com.lht.model.VisitLogModel;
+import com.lht.dModel.VisitLogModel;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;

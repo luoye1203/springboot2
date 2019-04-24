@@ -1,4 +1,4 @@
-package com.lht.model;
+package com.lht.dModel;
 
 public class VisitLogModel {
 

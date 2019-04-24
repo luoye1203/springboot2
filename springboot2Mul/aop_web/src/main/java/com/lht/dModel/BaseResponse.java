@@ -1,4 +1,4 @@
-package com.lht.model;
+package com.lht.dModel;
 
 import java.util.HashMap;
 import java.util.Map;

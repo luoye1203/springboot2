@@ -1,7 +1,7 @@
 package com.lht.bService;
 
 import com.lht.cDao.VisitLogDao;
-import com.lht.model.VisitLogModel;
+import com.lht.dModel.VisitLogModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

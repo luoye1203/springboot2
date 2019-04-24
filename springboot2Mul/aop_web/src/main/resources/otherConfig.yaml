@@ -1,0 +1,4 @@
+interceptor:
+  urls:
+  -  "/interceptor/*"
+  -  "/xxxxxxxxx/*"

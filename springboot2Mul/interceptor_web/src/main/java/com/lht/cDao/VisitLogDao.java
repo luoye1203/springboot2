@@ -1,6 +1,6 @@
 package com.lht.cDao;
 
-import com.lht.model.VisitLogModel;
+import com.lht.dModel.VisitLogModel;
 import org.springframework.stereotype.Repository;
 
 @Repository

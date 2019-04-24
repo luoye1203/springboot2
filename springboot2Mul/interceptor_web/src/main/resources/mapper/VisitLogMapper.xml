@@ -3,7 +3,7 @@
 <mapper namespace="com.lht.cDao.VisitLogDao">
 
 
-    <insert id="insertVistLog" parameterType="com.lht.model.VisitLogModel">
+    <insert id="insertVistLog" parameterType="com.lht.dModel.VisitLogModel">
         INSERT INTO visitlog(moudelname,                    apiname,                            ip,             url)VALUES
                             (#{moudelName,jdbcType=VARCHAR},#{apiName,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR} )
     </insert>
