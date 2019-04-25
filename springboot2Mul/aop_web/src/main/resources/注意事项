@@ -6,4 +6,7 @@
         实现 ImportBeanDefinitionRegistrar 接口的普通类 只能用import来注册，注意其实本身这个实现类并不是一个注册bean，而是重写
         ImportBeanDefinitionRegistrar 的registerBeanDefinitions方法，方法内，注册了一些bean,这些bean只接受import注解注册
 2 spring-boot-configuration-processor pom引入 然后yaml文件会自动提示配置项
+3 pom子父继承 需要注意
+  如果父类的 <dependency>不在 <dependencyManagement> 里面管理
+  那么子pox不需要重复填写引入此<dependency>模块，就会被自动引入
 

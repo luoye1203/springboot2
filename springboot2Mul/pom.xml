@@ -6,12 +6,14 @@
 
     <groupId>com.lht</groupId>
     <artifactId>springboot2Mul</artifactId>
-<!--    <packaging>pom</packaging>-->
+    <packaging>pom</packaging>
+    <!--    <packaging>pom</packaging>-->
     <version>1.0</version>
     <modules>
         <module>app_config</module>
         <module>aop_web</module>
         <module>interceptor_web</module>
+        <module>websocket_web</module>
     </modules>
 
     <parent>
@@ -36,6 +38,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
