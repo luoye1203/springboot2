@@ -41,7 +41,7 @@ public class TestSwagger {
                     @ApiImplicitParam(name = "message",paramType = "query",value = "消息内容",dataType = "string",defaultValue = "测试消息...........")
             }
     )
-    @VisitLog("")
+    @VisitLog("测试")
     public BaseResponse sendKafka(@RequestParam String message) {
         try {
             logger.info("测试成功");
@@ -51,7 +51,7 @@ public class TestSwagger {
             logger.info(interceptorConfig.getUrls().toString());
 
         } catch (Exception e) {
-            logger.error("发送kafka失败",e);
+            e.printStackTrace();
             return BaseResponse.buildResponse().setCode(200).setMessage("发送失败").build();
         }
         BaseResponse response=BaseResponse.buildResponse().setCode(200).setMessage("发送成功").build();

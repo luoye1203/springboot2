@@ -32,7 +32,7 @@ public class DynamicDataSourceContextHolder {
     }
 
     public static void setDataSourceRouterKey (String dataSourceRouterKey) {
-        logger.info("切换至{}数据源", dataSourceRouterKey);
+        logger.debug("切换至{}数据源", dataSourceRouterKey);
         HOLDER.set(dataSourceRouterKey);
     }
 

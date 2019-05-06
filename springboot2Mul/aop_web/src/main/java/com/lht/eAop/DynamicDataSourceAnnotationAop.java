@@ -24,8 +24,8 @@ public class DynamicDataSourceAnnotationAop {
 
 
     //定义切点
-    @Pointcut("@within(com.lht.dAnnotation.DataSource)")
-//    @Pointcut("execution(* com.lht.cDao..*.*(..))")
+//    @Pointcut("@within(com.lht.dAnnotation.DataSource)")
+    @Pointcut("execution(* com.lht.cDao..*.*(..))")
 //    @Pointcut("execution(* com.lht.cDao..*.*(..)) && @target(com.lht.dAnnotation.DataSource)")
 //    @Pointcut("@target(com.lht.dAnnotation.DataSource)") //错误
     public void dynamicDataSourceCut() {
@@ -36,11 +36,11 @@ public class DynamicDataSourceAnnotationAop {
     //环绕通知,环绕增强，相当于MethodInterceptor
     @Around("dynamicDataSourceCut()")
     public Object arround(ProceedingJoinPoint pjp) {
-        logger.info("方法环绕start.....");
+        logger.debug("方法环绕start.....");
         //AOP代理类的信息
-        logger.info(pjp.getThis().toString());
+        logger.debug(pjp.getThis().toString());
         //代理的目标对象
-        logger.info(pjp.getTarget().toString());
+        logger.debug(pjp.getTarget().toString());
 
 
         try {
@@ -56,13 +56,13 @@ public class DynamicDataSourceAnnotationAop {
             DynamicDataSourceContextHolder.setDataSourceRouterKey(dynamicDataSourceKey);
             Object o = pjp.proceed();
             DynamicDataSourceContextHolder.removeDataSourceRouterKey();
-//            logger.info("方法环绕proceed，结果是 :" + o);
+//            logger.debug("方法环绕proceed，结果是 :" + o);
             return o;
         } catch (Throwable e) {
             e.printStackTrace();
             return null;
         } finally {
-            logger.info("清除数据源");
+            logger.debug("清除数据源");
             DynamicDataSourceContextHolder.removeDataSourceRouterKey();
         }
     }
