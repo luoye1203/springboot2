@@ -1,7 +1,7 @@
 var ip="localhost";
 // var ip="10.4.106.24";
 var port="8080";
-var appName="messagePush_server";
+// var appName="messagePush_server";
 var uri="chat";
 
 // var wsurl="ws://"+ip+":"+port+"/"+appName+"/"+uri;
