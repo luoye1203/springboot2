@@ -45,6 +45,7 @@ public class TestSwagger {
     public BaseResponse sendKafka(@RequestParam String message) {
         try {
             logger.info("测试成功");
+            logger.info("123");
             logger.info(env.getProperty("catalina.home"));
             logger.info(mybatisService.getDic().toString());
             logger.info(interceptorConfig.getUrls().toString());
