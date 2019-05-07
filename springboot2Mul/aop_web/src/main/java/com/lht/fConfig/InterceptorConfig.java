@@ -16,14 +16,13 @@ import java.util.List;
 @Data
 public class InterceptorConfig implements WebMvcConfigurer {
    private List<String> urls;
+   private List<String> excludeUrls;
 
    @Override
    public void addInterceptors(InterceptorRegistry registry) {
-      //        String[] urls1={"/interceptor/*"};
-      registry.addInterceptor(new InterceptorMyA()).addPathPatterns(urls.toArray(new String[urls.size()]));
-//        registry.addInterceptor(new InterceptorMyA()).addPathPatterns(urls);
-      registry.addInterceptor(new InterceptorMyB()).addPathPatterns(urls.toArray(new String[urls.size()]));
-//        registry.addInterceptor(new InterceptorMyB()).addPathPatterns(urls);
+      registry.addInterceptor(new InterceptorMyA()).addPathPatterns(urls).excludePathPatterns(excludeUrls);
+
+      registry.addInterceptor(new InterceptorMyB()).addPathPatterns(urls).excludePathPatterns(excludeUrls);
 
    }
 }

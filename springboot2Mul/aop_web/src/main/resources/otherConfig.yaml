@@ -1,4 +1,6 @@
 interceptor:
   urls:
   -  "/interceptor/*"
-#  -  "/swagger/*"
+  -  "/swagger/*"
+  excludeUrls:
+  -  "/swagger/*"
