@@ -37,6 +37,11 @@ spring:
       linger: 1
       client-id: socketClient
 
+
+
+
+
+
 #server:
 #  tomcat:
 ##  max-http-header-size: 655360
