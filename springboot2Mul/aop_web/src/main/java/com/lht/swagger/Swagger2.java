@@ -47,6 +47,22 @@ public class Swagger2 {
                 .apiInfo(detailInfo("TestSwagger"));
     }
 
+    @Bean
+    public Docket springsession() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("springsession")
+                .genericModelSubstitutes(DeferredResult.class)
+//                .genericModelSubstitutes(ResponseEntity.class)
+                .useDefaultResponseMessages(false)
+                .forCodeGeneration(true)
+                .pathMapping("/")
+                .select()
+                .paths(PathSelectors.regex("/springsession/.*"))//过滤的接口
+                .build()
+                .globalOperationParameters(getTokenParam())
+                .apiInfo(detailInfo("springsession"));
+    }
+
 
 
 
