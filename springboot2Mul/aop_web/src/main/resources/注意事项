@@ -10,3 +10,5 @@
   如果父类的 <dependency>不在 <dependencyManagement> 里面管理
   那么子pox不需要重复填写引入此<dependency>模块，就会被自动引入
 
+4 springboot的自带定时任务 为单线程，多线程要注意配置 com.lht.fConfig.ScheduleConfig
+

@@ -9,10 +9,8 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import javax.servlet.annotation.WebFilter;
 
 @SpringBootApplication(exclude={HibernateJpaAutoConfiguration.class, DataSourceAutoConfiguration.class})
 @EnableSwagger2
