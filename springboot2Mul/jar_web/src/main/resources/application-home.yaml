@@ -8,10 +8,9 @@ spring:
 
 
 
-#server:
-#  tomcat:
-##  max-http-header-size: 655360
-#  port: 9090
+server:
+#  max-http-header-size: 655360
+  port: 9090
 mybatis:
     mapper-locations: classpath:mapper/*.xml
     config-location: classpath:mapper/mybatisConfig/mybatisConfig.xml
