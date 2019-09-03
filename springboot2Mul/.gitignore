@@ -12,3 +12,5 @@ logs/
 websocket_web/target/
 /websocket_web/websocket_web.iml
 /websocket_web/target/
+/jar_web/target/
+/jar_web/jar_web.iml
