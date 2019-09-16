@@ -1,12 +1,15 @@
 package com.lht.aController;
 
 
+import com.lht.bService.ExportService;
 import com.lht.dModel.BaseResponse;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 
 @RestController
 @Api("测试swagger集成服务")
@@ -54,7 +58,13 @@ public class TestSwagger {
 
 
 
+    @Autowired
+    private ExportService exportService;
 
+    @RequestMapping(value = "export", method = RequestMethod.GET)
+    public ResponseEntity<FileSystemResource> exportXls(HttpServletRequest request) {
+        return exportService.export(request,new File("E:\\123.docx"));
+    }
 
 
 

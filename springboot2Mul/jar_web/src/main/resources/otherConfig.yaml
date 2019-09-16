@@ -1,0 +1,7 @@
+interceptor:
+  urls:
+  -  "/interceptor/*"
+  -  "/tokentest/*"
+  excludeUrls:
+  -  "/swagger/*"
+  -  "/loginmange/*"

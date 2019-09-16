@@ -32,7 +32,7 @@ public class Swagger2 {
     }
 
     @Bean
-    public Docket test() {
+    public Docket swaggertest() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("TestSwagger")
                 .genericModelSubstitutes(DeferredResult.class)
@@ -45,6 +45,38 @@ public class Swagger2 {
                 .build()
                 .globalOperationParameters(getTokenParam())
                 .apiInfo(detailInfo("TestSwagger"));
+    }
+
+    @Bean
+    public Docket loginmange() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("登录管理")
+                .genericModelSubstitutes(DeferredResult.class)
+//                .genericModelSubstitutes(ResponseEntity.class)
+                .useDefaultResponseMessages(false)
+                .forCodeGeneration(true)
+                .pathMapping("/")
+                .select()
+                .paths(PathSelectors.regex("/loginmange/.*"))//过滤的接口
+                .build()
+//                .globalOperationParameters(getTokenParam())
+                .apiInfo(detailInfo("登录管理"));
+    }
+
+    @Bean
+    public Docket authtest() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("token测试")
+                .genericModelSubstitutes(DeferredResult.class)
+//                .genericModelSubstitutes(ResponseEntity.class)
+                .useDefaultResponseMessages(false)
+                .forCodeGeneration(true)
+                .pathMapping("/")
+                .select()
+                .paths(PathSelectors.regex("/tokentest/.*"))//过滤的接口
+                .build()
+                .globalOperationParameters(getTokenParam())
+                .apiInfo(detailInfo("token测试"));
     }
 
 
