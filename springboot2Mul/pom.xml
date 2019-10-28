@@ -15,6 +15,7 @@
         <module>interceptor_web</module>
         <module>websocket_web</module>
         <module>jar_web</module>
+        <module>EtlJdbc</module>
     </modules>
 
     <parent>

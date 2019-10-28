@@ -1,0 +1,12 @@
+1 注意 pluginmanagement和plugins区别
+ 子模块不要使用pluginmanagement
+
+2 Spring Boot:jar中没有主清单属性的解决办法
+<build>
+  <plugins>
+  	<plugin>
+  		<groupId>org.springframework.boot</groupId>
+ 		<artifactId>spring-boot-maven-plugin</artifactId>
+  	</plugin>
+  </plugins>
+ </build>

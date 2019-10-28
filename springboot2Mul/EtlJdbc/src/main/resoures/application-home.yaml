@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lht_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 198412
+  kafka:
+    consumer:
+      bootstrap-servers: 114.55.210.28:9092,47.110.156.88:9092,47.99.210.236:9092
+      enable-auto-commit: true
+      auto-commit-interval: 1
+      auto-offset-reset: latest
+      group-id: jdbcstatus_1
+    producer:
+      bootstrap-servers: 114.55.210.28:9092,47.110.156.88:9092,47.99.210.236:9092
+      topic: jdbcstatus
+      acks: all
+      retries: 0
+      batch-size: 4096
+      buffer-memory: 40960
+      linger: 1
+      client-id: socketClient
+
+
+
+server:
+#  max-http-header-size: 655360
+  port: 9090
+mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    config-location: classpath:mapper/mybatisConfig/mybatisConfig.xml
+logging:
+  config: classpath:logback-spring.xml
+
+
+
+
+
+
+
+
+
+

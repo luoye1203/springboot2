@@ -100,6 +100,19 @@
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
     </dependency>
+    <dependency>
+      <groupId>inceptor-driver</groupId>
+      <artifactId>inceptor</artifactId>
+      <version>0.1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>dm.jdbc</groupId>
+      <artifactId>dameng</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+
   </dependencies>
 
 
