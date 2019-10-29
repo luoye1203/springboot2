@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @Api("测试swagger集成服务")
@@ -71,6 +73,31 @@ public class JdbcTestController {
 
 
 
+
+
+    @RequestMapping(value = "/getIp", method = RequestMethod.GET)
+    @ApiOperation(value = "获取Ip",notes = "")
+    @ApiParam(required = true)
+    @ApiImplicitParams(
+            {
+//                    @ApiImplicitParam(name = "taskId",paramType = "query",value = "任务Id",dataType = "string",defaultValue = "1001")
+            }
+    )
+    public boolean getIp( HttpServletRequest request) {
+        try {
+            String ip = request.getRemoteAddr();
+            logger.info(ip);
+            Date date = new Date();
+            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+            logger.info(dateFormat.format(date));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
 
 
