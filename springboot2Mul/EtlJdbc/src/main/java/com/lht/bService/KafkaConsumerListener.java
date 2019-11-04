@@ -6,13 +6,14 @@ package com.lht.bService;
 
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 //@Component
 public class KafkaConsumerListener {
-	private static final Logger LOG= Logger.getLogger(KafkaConsumerListener.class);
+	private Logger LOG= LoggerFactory.getLogger(this.getClass());
 
 
 

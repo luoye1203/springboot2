@@ -3,7 +3,8 @@ package com.lht.fConfig;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -16,7 +17,7 @@ import java.util.Map;
 //@Configuration
 //@EnableKafka
 public class KafkaProducerConfig {
-	private static final Logger LOG= Logger.getLogger(KafkaProducerConfig.class);
+	private Logger LOG= LoggerFactory.getLogger(this.getClass());
 
 	@Value("${spring.kafka.producer.servers}")
 	private String servers;
@@ -39,7 +40,7 @@ public class KafkaProducerConfig {
 		props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, bufferMemory);
 		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-		LOG.info(props);
+		LOG.info(props.toString());
 		return props;
 	}
 

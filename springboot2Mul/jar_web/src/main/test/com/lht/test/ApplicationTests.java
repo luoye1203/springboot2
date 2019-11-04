@@ -2,15 +2,11 @@ package com.lht.test;
 
 import com.alibaba.fastjson.JSON;
 import com.lht.bService.UserService;
-import com.lht.cDao.MybatisDao;
-import com.lht.cDao.UserDao;
 import com.lht.dModel.JdbcTaskModel;
 import com.lht.dModel.User;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -51,9 +47,8 @@ public class ApplicationTests {
         try {
             HttpClient client = new DefaultHttpClient();
             //发送get请求
-            String url = "http://127.0.0.1:9090/jdbcService/startJdbcTask";
+            String url = "http://127.0.0.1:8066/etl/sendTask";
             HttpPost request = new HttpPost(url);
-            request.setHeader("Authorization", "Basic bWFzdGVyOm1vZGVsX21hc3Rlcg==");
             JdbcTaskModel model=new JdbcTaskModel();
             model.setTaskId("1111");
             model.setCountSql("select * from  t_table where t.name=\"hha\"");
