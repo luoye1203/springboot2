@@ -60,7 +60,7 @@ public class DmJdbcController {
 
 
     @RequestMapping(value = "/testKafkaProduct", method = RequestMethod.POST)
-    @ApiOperation(value = "测试联通",notes = "")
+    @ApiOperation(value = "测试kafka发送",notes = "")
     @ApiParam(required = true)
     @ApiImplicitParams(
             {

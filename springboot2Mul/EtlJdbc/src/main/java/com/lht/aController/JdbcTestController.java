@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Api("测试swagger集成服务")
-@RequestMapping("/jdbcService/")
+@RequestMapping("/etl/")
 public class JdbcTestController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -21,7 +21,7 @@ public class JdbcTestController {
     private KafkaProduceService kafkaProduceService;
 
 
-    @RequestMapping(value = "/startJdbcTask", method = RequestMethod.POST)
+    @RequestMapping(value = "/sendTask", method = RequestMethod.POST)
     @ApiOperation(value = "模拟启动任务",notes = "")
     @ApiParam(required = true)
     @ApiImplicitParams(
@@ -46,17 +46,18 @@ public class JdbcTestController {
 
 
 
-    @RequestMapping(value = "/delJdbcJobByTaskId", method = RequestMethod.GET)
+    @RequestMapping(value = "/delTask", method = RequestMethod.POST)
     @ApiOperation(value = "删除任务",notes = "")
     @ApiParam(required = true)
     @ApiImplicitParams(
             {
-                    @ApiImplicitParam(name = "taskId",paramType = "query",value = "任务Id",dataType = "string",defaultValue = "1001")
+                    @ApiImplicitParam(name = "model",paramType = "body",value = "任务ti",dataType = "JdbcTaskModel")
             }
     )
-    public boolean delJdbcJobByTaskId( @RequestParam String taskId) {
+    public boolean delJdbcJobByTaskId( @RequestBody JdbcTaskModel model) {
         try {
-            logger.info(taskId);
+            logger.info(model.toString());
+            logger.info("模拟删除任务成功");
 
         } catch (Exception e) {
             e.printStackTrace();

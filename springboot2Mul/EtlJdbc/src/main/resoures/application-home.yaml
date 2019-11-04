@@ -25,7 +25,7 @@ spring:
 
 server:
 #  max-http-header-size: 655360
-  port: 9090
+  port: 8066
 mybatis:
     mapper-locations: classpath:mapper/*.xml
     config-location: classpath:mapper/mybatisConfig/mybatisConfig.xml

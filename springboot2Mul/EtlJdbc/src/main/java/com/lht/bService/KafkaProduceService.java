@@ -33,13 +33,15 @@ public class KafkaProduceService {
 
         int count = (int)(Math.random()*10000+1);
         jdbcSatusResultModel.setCountHdfs(count+"");
-
         if(count%2==0){
+
             jdbcSatusResultModel.setStatusCode("2");
         }else{
-            jdbcSatusResultModel.setStatusCode("5");
+            jdbcSatusResultModel.setStatusCode("3");
 
         }
+        jdbcSatusResultModel.setStatusCode("2");
+
         logger.info(JSON.toJSONString(jdbcSatusResultModel));
         kafkaTemplate.send(topicName, "key", JSON.toJSONString(jdbcSatusResultModel));
         logger.info("发送完毕");

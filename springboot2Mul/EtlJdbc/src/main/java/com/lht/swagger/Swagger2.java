@@ -89,7 +89,7 @@ public class Swagger2 {
                 .forCodeGeneration(true)
                 .pathMapping("/")
                 .select()
-                .paths(PathSelectors.regex("/jdbcService/.*"))//过滤的接口
+                .paths(PathSelectors.regex("/etl/.*"))//过滤的接口
                 .build()
                 .globalOperationParameters(getTokenParam())
                 .apiInfo(detailInfo("jdbc模拟服务"));
