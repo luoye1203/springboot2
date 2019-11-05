@@ -1,8 +1,8 @@
 package com.lht.swagger;
 
+import com.lht.bController.DmJdbcController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.context.request.async.DeferredResult;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -32,106 +32,48 @@ public class Swagger2 {
         return pars;
     }
 
-//    @Bean
-//    public Docket swaggertest() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("TestSwagger")
-//                .genericModelSubstitutes(DeferredResult.class)
-////                .genericModelSubstitutes(ResponseEntity.class)
-//                .useDefaultResponseMessages(false)
-//                .forCodeGeneration(true)
-//                .pathMapping("/")
-//                .select()
-//                .paths(PathSelectors.regex("/swagger/.*"))//过滤的接口
-//                .build()
-//                .globalOperationParameters(getTokenParam())
-//                .apiInfo(detailInfo("TestSwagger"));
-//    }
-//
-//    @Bean
-//    public Docket loginmange() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("登录管理")
-//                .genericModelSubstitutes(DeferredResult.class)
-////                .genericModelSubstitutes(ResponseEntity.class)
-//                .useDefaultResponseMessages(false)
-//                .forCodeGeneration(true)
-//                .pathMapping("/")
-//                .select()
-//                .paths(PathSelectors.regex("/loginmange/.*"))//过滤的接口
-//                .build()
-////                .globalOperationParameters(getTokenParam())
-//                .apiInfo(detailInfo("登录管理"));
-//    }
-//
-//    @Bean
-//    public Docket authtest() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("token测试")
-//                .genericModelSubstitutes(DeferredResult.class)
-////                .genericModelSubstitutes(ResponseEntity.class)
-//                .useDefaultResponseMessages(false)
-//                .forCodeGeneration(true)
-//                .pathMapping("/")
-//                .select()
-//                .paths(PathSelectors.regex("/tokentest/.*"))//过滤的接口
-//                .build()
-//                .globalOperationParameters(getTokenParam())
-//                .apiInfo(detailInfo("token测试"));
-//    }
-//
-//    @Bean
-//    public Docket jdbcService() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("jdbc模拟服务")
-//                .genericModelSubstitutes(DeferredResult.class)
-////                .genericModelSubstitutes(ResponseEntity.class)
-//                .useDefaultResponseMessages(false)
-//                .forCodeGeneration(true)
-//                .pathMapping("/")
-//                .select()
-//                .paths(PathSelectors.regex("/jdbcService/.*"))//过滤的接口
-//                .build()
-//                .globalOperationParameters(getTokenParam())
-//                .apiInfo(detailInfo("jdbc模拟服务"));
-//    }
-//    @Bean
-//    public Docket dmjdbcService() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("dmjdbc模拟服务")
-//                .genericModelSubstitutes(DeferredResult.class)
-////                .genericModelSubstitutes(ResponseEntity.class)
-//                .useDefaultResponseMessages(false)
-//                .forCodeGeneration(true)
-//                .pathMapping("/")
-//                .select()
-//                .paths(PathSelectors.regex("/dmJdbcService/.*"))//过滤的接口
-//                .build()
-//                .globalOperationParameters(getTokenParam())
-//                .apiInfo(detailInfo("dmjdbc模拟服务"));
-//    }
-//
+    //携带全局参数
+
     @Bean
-    public Docket createRestApi() {
+    public Docket globalPrametersRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
+                .groupName("私有服务")
+                .apiInfo(globalPrametersApiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.lht.aController"))
+                .paths(PathSelectors.any())
+                .build()
+                .globalOperationParameters(getTokenParam());
+    }
+
+    //不携带全局参数
+
+    @Bean
+    public Docket noGlobalPrametersRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("公共服务")
+                .apiInfo(noGlobalPrametersApiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.lht.bController"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
-    /**
-     * 创建该API的基本信息（这些基本信息会展现在文档页面中）
-     * 访问地址：http://项目实际地址/swagger-ui.html
-     *
-     * @return
-     */
-    private ApiInfo apiInfo() {
+
+    private ApiInfo globalPrametersApiInfo() {
         return new ApiInfoBuilder()
-                .title("测试 APIs")
-                .description("测试api接口文档")
-                .termsOfServiceUrl("http://www.baidu.com")
+                .title("测试 APIs携带全局参数")
+                .description("测试api接口文档，携带全局参数")
+//                .termsOfServiceUrl("http://www.baidu.com")
+                .version("1.0")
+                .build();
+    }
+
+    private ApiInfo noGlobalPrametersApiInfo() {
+        return new ApiInfoBuilder()
+                .title("测试 APIs不携带全局参数")
+                .description("测试api接口文档，不携带全局参数")
+//                .termsOfServiceUrl("http://www.baidu.com")
                 .version("1.0")
                 .build();
     }
@@ -139,9 +81,4 @@ public class Swagger2 {
 
 
 
-    private ApiInfo detailInfo(String title) {
-        return new ApiInfoBuilder()
-                .title(title)//大标题
-                .build();
-    }
 }

@@ -1,4 +1,4 @@
-package com.lht.aController;
+package com.lht.bController;
 
 import com.lht.bService.DmJdbcService;
 import com.lht.dModel.DmJdbcParamsModel;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api("测试达梦数据库")
+@Api(description = "达梦数据库测试")
 @RequestMapping("/dmJdbcService/")
 public class DmJdbcController {
 
