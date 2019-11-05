@@ -15,8 +15,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@SpringBootApplication(exclude={HibernateJpaAutoConfiguration.class, DataSourceAutoConfiguration.class})
 @SpringBootApplication(exclude={HibernateJpaAutoConfiguration.class})
 @EnableSwagger2
-@EnableScheduling
-@EnableCaching
+//@EnableScheduling
+//@EnableCaching
 @ServletComponentScan //使@WebFilter 起作用
 @MapperScan("com.lht.cDao")
 public class JarStartApplication extends SpringBootServletInitializer {
