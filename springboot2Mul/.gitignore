@@ -15,3 +15,5 @@ websocket_web/target/
 /jar_web/target/
 /jar_web/jar_web.iml
 /EtlJdbc/EtlJdbc.iml
+/EtlJdbc/target/
+
