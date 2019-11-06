@@ -88,7 +88,7 @@ public class JdbcTestController {
             String ip = request.getRemoteAddr();
             logger.info(ip);
             Date date = new Date();
-            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             logger.info(dateFormat.format(date));
 
 

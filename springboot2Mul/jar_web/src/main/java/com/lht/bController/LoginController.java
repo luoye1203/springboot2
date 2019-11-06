@@ -1,4 +1,4 @@
-package com.lht.aController;
+package com.lht.bController;
 
 import com.lht.dModel.BaseResponse;
 import io.swagger.annotations.*;
@@ -32,6 +32,7 @@ public class LoginController {
     )
     public BaseResponse test( @RequestParam() String account,@RequestParam String password) {
         try {
+            logger.info(account+" "+password);
             logger.info(account+" "+password);
 
 
