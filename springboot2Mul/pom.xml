@@ -16,6 +16,7 @@
         <module>websocket_web</module>
         <module>jar_web</module>
         <module>EtlJdbc</module>
+        <module>noWeb</module>
     </modules>
 
     <parent>
