@@ -5,7 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class JSONUtils {
 
-    public static String jsonFormmtedStr(Object object){
+    public static String jsonFormattedStr(Object object){
 
         if(null==object){
             return null;

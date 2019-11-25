@@ -27,7 +27,7 @@ public class KafkaProduceService {
     public void monichulijdbstatus(JdbcTaskModel model) {
 
 
-        logger.info(JSONUtils.jsonFormmtedStr(model));
+        logger.info(JSONUtils.jsonFormattedStr(model));
         kafkaTemplate.send(topicName, "key", JSON.toJSONString(model));
         logger.info("发送完毕");
 
