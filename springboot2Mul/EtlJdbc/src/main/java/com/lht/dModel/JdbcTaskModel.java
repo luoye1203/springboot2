@@ -14,6 +14,9 @@ public class JdbcTaskModel {
     private String startTime;
     private String endTime;
     private List<String> columnList ;
+    private String countHdfs;
+    private String statusCode;
+    private String deleteFlag;
 
 
 }

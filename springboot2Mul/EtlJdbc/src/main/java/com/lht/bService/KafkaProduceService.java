@@ -2,8 +2,9 @@ package com.lht.bService;
 
 
 import com.alibaba.fastjson.JSON;
-import com.lht.dModel.JdbcSatusResultModel;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.lht.dModel.JdbcTaskModel;
+import com.lht.util.JSONUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,27 +24,11 @@ public class KafkaProduceService {
     private KafkaTemplate kafkaTemplate;
 
 
-
-    public void monichulijdbstatus(JdbcTaskModel model){
-
-        JdbcSatusResultModel jdbcSatusResultModel=new JdbcSatusResultModel();
-        jdbcSatusResultModel.setTaskId(model.getTaskId());
-        jdbcSatusResultModel.setTaskVersionId(model.getTaskVersionId());
+    public void monichulijdbstatus(JdbcTaskModel model) {
 
 
-        int count = (int)(Math.random()*10000+1);
-        jdbcSatusResultModel.setCountHdfs(count+"");
-        if(count%2==0){
-
-            jdbcSatusResultModel.setStatusCode("2");
-        }else{
-            jdbcSatusResultModel.setStatusCode("3");
-
-        }
-        jdbcSatusResultModel.setStatusCode("2");
-
-        logger.info(JSON.toJSONString(jdbcSatusResultModel));
-        kafkaTemplate.send(topicName, "key", JSON.toJSONString(jdbcSatusResultModel));
+        logger.info(JSONUtils.jsonFormmtedStr(model));
+        kafkaTemplate.send(topicName, "key", JSON.toJSONString(model));
         logger.info("发送完毕");
 
     }

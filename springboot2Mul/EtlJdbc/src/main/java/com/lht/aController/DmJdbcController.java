@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Api("测试达梦数据库")
 @RequestMapping("/dmJdbcService/")
@@ -82,4 +84,51 @@ public class DmJdbcController {
         return true;
     }
 
+
+
+
+    @RequestMapping(value = "/getData", method = RequestMethod.GET)
+    @ApiOperation(value = "获取数据",notes = "")
+    @ApiParam(required = true)
+    @ApiImplicitParams(
+            {
+//                    @ApiImplicitParam(name = "message",paramType = "query",value = "",dataType = "string")
+            }
+    )
+    public boolean getData() {
+        try {
+
+            List list=this.dmJdbcService.getData();
+            logger.info(list.toString());
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
+    @RequestMapping(value = "/addData", method = RequestMethod.GET)
+    @ApiOperation(value = "增加数据",notes = "")
+    @ApiParam(required = true)
+    @ApiImplicitParams(
+            {
+//                    @ApiImplicitParam(name = "message",paramType = "query",value = "",dataType = "string")
+            }
+    )
+    public boolean addData() {
+        try {
+
+            this.dmJdbcService.addData();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
