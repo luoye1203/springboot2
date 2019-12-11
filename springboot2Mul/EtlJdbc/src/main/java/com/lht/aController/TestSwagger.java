@@ -7,9 +7,11 @@ import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +35,12 @@ public class TestSwagger {
     @Autowired
     HttpSession httpSession;
 
+    @Autowired
+    private KafkaTemplate kafkaTemplate;
+
+    @Value("${spring.kafka.producer.topic}")
+    private String topicName;
+
     @RequestMapping(value = "/send", method = RequestMethod.GET)
     @ApiOperation(value = "测试是否成功",notes = "")
     @ApiParam(required = true)
@@ -47,7 +55,7 @@ public class TestSwagger {
             logger.info("123");
 
 
-
+            kafkaTemplate.send(topicName, "key", "xxxxxxxx");
         } catch (Exception e) {
             e.printStackTrace();
             return BaseResponse.buildResponse().setCode(200).setMessage("发送失败").build();

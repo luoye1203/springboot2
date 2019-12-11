@@ -15,7 +15,7 @@ spring:
       enable-auto-commit: true
       auto-commit-interval: 1
       auto-offset-reset: latest
-      group-id: jdbcstatus_1
+      group-id: jdbcstatus_2
     producer:
       bootstrap-servers: 47.110.8.129:9092
       topic: status-topic
