@@ -17,6 +17,7 @@
         <module>jar_web</module>
         <module>EtlJdbc</module>
         <module>noWeb</module>
+        <module>myquartz</module>
     </modules>
 
     <parent>

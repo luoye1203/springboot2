@@ -1,6 +1,7 @@
 package com.lht;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -21,8 +22,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class EtlJdbcStartApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(EtlJdbcStartApplication.class, args);
-
+        SpringApplication springApplication=new SpringApplication(EtlJdbcStartApplication.class);
+        springApplication.setBannerMode(Banner.Mode.LOG);
+        springApplication.run(args);
     }
 
 }

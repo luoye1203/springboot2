@@ -1,14 +1,14 @@
 spring:
-#  datasource:
-#    driverClassName: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://127.0.0.1:3306/lht_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-#    username: root
-#    password: 198412
   datasource:
-    driverClassName: dm.jdbc.driver.DmDriver
-    url: jdbc:dm://127.0.0.1:5236/DMSERVER?
-    username: xuese1203
-    password: lht025991
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.173:3306/lht_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 198412
+#  datasource:
+#    driverClassName: dm.jdbc.driver.DmDriver
+#    url: jdbc:dm://127.0.0.1:5236/DMSERVER?
+#    username: xuese1203
+#    password: lht025991
   kafka:
     consumer:
       bootstrap-servers: 47.110.8.129:9092

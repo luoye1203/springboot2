@@ -1,0 +1,48 @@
+自己的项目中,有个定时任务的模块,里面需要将返回的对象强转为某个实体类JobModel,可是在转换的过程中,却报出了java.lang.ClassCastException: com.jy.admin.server.model.JobModel cannot be cast to com.jy.admin.server.model.JobModel
+
+at com.jy.admin.server.service.impl.JobServiceImpl.doJob(JobServiceImpl.java:103)这样的异常,
+
+找到对应的那行代码
+
+
+ 
+JobModel jobModel=(JobModel)jobDataMap.get(JOB_DATA_KEY);
+就是这行代码出现了强转的错误.
+
+期间也将该对象打印出来,发现确实是JobModel对象,debug的时候,那个对象里面存的数据也是正确的,初步怀疑是JobModel的serialVersionUID发生了改变,但后面发现并不是这个原因;
+
+问题产生了就要解决,抓耳挠晒下,想到了一个解决办法,既然数据存在这个对象中没错,那就曲线救国一下,先将该对象转换成json,然后再转换回来,问题完美解决,代码如下,原因未知
+
+ 
+
+Object temp = jobDataMap.get(JOB_DATA_KEY);
+JobModel jobModel=new JobModel();
+System.out.println(temp);
+if (temp instanceof JobModel){
+   jobModel= (JobModel) temp;
+}else {
+   String string = JSON.toJSON(temp).toString();
+   System.out.println(string);
+   jobModel = JSON.parseObject(string, JobModel.class);
+}
+最终解决方案：
+
+麦奇： 楼主，原因是因为你们的项目中应该是采用了热部署，devtools，因为累加载器的不同所以会导致类型转换失败(5个月前#4楼)
+
+ 
+
+琳达chu： 楼主我碰到的问题和你一模一样，是spring的devtools引起的，你把下面的依赖去掉应该就可以了
+
+<dependency>
+
+    <groupId>org.springframework.boot</groupId>
+
+    <artifactId>spring-boot-devtools</artifactId>
+
+    <scope>runtime</scope>
+
+</dependency>
+
+
+详情网址如下:
+    https://blog.csdn.net/m0_37609579/article/details/80197983
