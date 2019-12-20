@@ -1,6 +1,7 @@
 package com.lht.myquartz.aController;
 
 import com.lht.myquartz.bService.QuartzJobService;
+import com.lht.myquartz.bService.TaskService;
 import com.lht.myquartz.dModel.BaseResponse;
 import com.lht.myquartz.dModel.JobEntity;
 import com.lht.myquartz.util.JSONUtils;
@@ -22,6 +23,9 @@ public class QuartzJobController {
 
     @Autowired
     private QuartzJobService quartzJobService;
+
+    @Autowired
+    private TaskService taskService;
 
     @RequestMapping(value = "/addJob", method = RequestMethod.POST)
     @ApiOperation(value = "添加作业",notes = "")
@@ -45,6 +49,30 @@ public class QuartzJobController {
         return response;
 
     }
+
+    @RequestMapping(value = "/addTask", method = RequestMethod.POST)
+    @ApiOperation(value = "添加任务",notes = "")
+    @ApiParam(required = true)
+    @ApiImplicitParams(
+            {
+                    @ApiImplicitParam(name = "jobEntity",paramType = "body",value = "作业内容",dataType = "JobEntity")
+            }
+    )
+    public BaseResponse addTask(@RequestBody JobEntity jobEntity) {
+        logger.info("作业参数：{}", JSONUtils.jsonFormattedStr(jobEntity));
+        boolean successFlag=false;
+        try {
+            successFlag=taskService.addTask(jobEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        BaseResponse response=BaseResponse.buildResponse().setObj(successFlag).setCode(200).setMessage("添加成功").build();
+
+        return response;
+
+    }
+
 
     @RequestMapping(value = "/delJob", method = RequestMethod.POST)
     @ApiOperation(value = "删除作业",notes = "")

@@ -46,6 +46,7 @@ public class QuartzConfig {
         factory.setDataSource(dataSource);
         factory.setJobFactory(jobFactory);
         factory.setQuartzProperties(quartzProperties());
+//        factory.setSchedulerName("xxxxxxxxxx");
         return factory;
     }
 

@@ -270,7 +270,7 @@ public class ClazzUtils {
     @Test
     public void test(){
 
-        List<String> list = ClazzUtils.getClazzName("com.lht.myquartz.dModel", false);
+        List<String> list = ClazzUtils.getClazzName("com.lht.myquartz", true);
         Map<String,Class> classMap=ClazzUtils.getClazzNameAndObject("com.lht.myquartz.dModel", false);
         for (String string : list) {
 

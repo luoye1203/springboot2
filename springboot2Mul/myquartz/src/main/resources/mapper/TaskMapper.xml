@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lht.myquartz.cDao.TaskDao">
+
+    <select id="getTaskId" resultType="java.lang.String" >
+        SELECT nextval('task_seq');
+    </select>
+
+    <insert id="saveTask"  parameterType="com.lht.myquartz.dModel.TaskModel">
+        INSERT INTO `taskentity`(taskId,taskName,createtime,jobentitystr) VALUES (#{taskId,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, now(), #{jobEntityStr,jdbcType=VARCHAR});
+    </insert>
+
+    <update id="updateTsk">
+
+    </update>
+
+</mapper>

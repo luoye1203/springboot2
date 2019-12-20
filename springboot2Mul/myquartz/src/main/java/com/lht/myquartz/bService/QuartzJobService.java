@@ -57,8 +57,6 @@ public class QuartzJobService {
     public void addJobByDynamic(JobEntity jobEntity) throws Exception {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
 
-        JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put("jobEntity", jobDataMap);
 
         Map<String, Class> classMap = ClazzUtils.getClazzNameAndObject("com.lht.myquartz.fJob", false);
 
@@ -91,15 +89,59 @@ public class QuartzJobService {
     }
 
 
+    public boolean addSimpleJobByDynamic(String jobName, String jobGroup,int intervalInSeconds,int repeatCount,Date startAtDate, Class jobClazz, Object jobEntityObject ) throws Exception{
+        boolean successFlag = false;
+
+        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+
+        JobDetail jobDetail = JobBuilder.newJob(jobClazz).withIdentity(jobName, jobGroup).build();
+
+        jobDetail.getJobDataMap().put("jobEntityObject", jobEntityObject);
+
+        SimpleTrigger simpleTrigger = TriggerBuilder.newTrigger()
+                .withIdentity(jobName, jobGroup)
+                .startAt(startAtDate)
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(intervalInSeconds).withRepeatCount(repeatCount))
+                .build();
+
+        scheduler.scheduleJob(jobDetail, simpleTrigger);
+        successFlag=true;
+        logger.info("简单任务添加成功");
+
+        return successFlag;
+    }
+
+    public boolean addCycleJobByDynamic(String jobName, String jobGroup, String cronExpression, Class jobClazz, Object jobEntityObject) throws Exception {
+        boolean successFlag = false;
+
+        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+
+        JobDetail jobDetail = JobBuilder.newJob(jobClazz).withIdentity(jobName, jobGroup).build();
+
+        jobDetail.getJobDataMap().put("jobEntityObject", jobEntityObject);
+
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression);
+
+        CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity(jobName, jobGroup).withSchedule(cronScheduleBuilder).build();
+
+        scheduler.scheduleJob(jobDetail, cronTrigger);
+
+        successFlag = true;
+
+        logger.info("周期任务添加成功");
+
+        return successFlag;
+    }
+
     public boolean delJob(String jobName, String jobGroup) throws Exception {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
         JobKey jobKey = new JobKey(jobName, jobGroup);
-        boolean delFlag=false;
+        boolean delFlag = false;
         try {
             scheduler.pauseJob(jobKey);
             if (scheduler.unscheduleJob(triggerKey) && scheduler.deleteJob(jobKey)) {
-                delFlag=true;
+                delFlag = true;
             } else {
             }
         } catch (SchedulerException e) {
