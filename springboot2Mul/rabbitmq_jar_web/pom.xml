@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>springboot2Mul</artifactId>
-        <groupId>com.lht</groupId>
-        <version>1.0</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>springboot2Mul</artifactId>
+    <groupId>com.lht</groupId>
+    <version>1.0</version>
+  </parent>
 
   <groupId>com.lht</groupId>
-  <artifactId>EtlJdbc</artifactId>
+  <artifactId>rabbitmq_jar_web</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>EtlJdbc</name>
+  <name>rabbitmq_jar_web</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,10 +28,6 @@
 <!--      <artifactId>spring-boot-starter-data-redis</artifactId>-->
 <!--    </dependency>-->
     <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.lht</groupId>
       <artifactId>app_config</artifactId>
       <version>1.0</version>
@@ -40,7 +36,10 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
-
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-amqp</artifactId>
+      </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -83,12 +82,6 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
-
-<!--      <dependency>-->
-<!--          <groupId>dm.jdbc</groupId>-->
-<!--          <artifactId>dameng</artifactId>-->
-<!--          <version>1.0</version>-->
-<!--      </dependency>-->
     <dependency>
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger2</artifactId>
@@ -110,49 +103,50 @@
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+    </dependency>
 
 
   </dependencies>
 
 
   <build>
-    <finalName>EtlJdbc</finalName>
+    <finalName>rabbitmq_jar_web</finalName>
       <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                  <source>1.8</source>
-                  <target>1.8</target>
-                  <encoding>UTF-8</encoding>
-              </configuration>
-          </plugin>
-          <plugin>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-maven-plugin</artifactId>
-              <!--          <configuration>-->
-              <!--            <fork>true</fork>-->
-              <!--            <mainClass>com.sunpx.quartz_one.Application</mainClass>-->
-              <!--            <layout>ZIP</layout>-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+<!--          <configuration>-->
+<!--            <fork>true</fork>-->
+<!--            <mainClass>com.sunpx.quartz_one.Application</mainClass>-->
+<!--            <layout>ZIP</layout>-->
 
-              <!--          </configuration>-->
-              <executions>
-                  <!--            <execution>-->
-                  <!--              <goals>-->
-                  <!--                <goal>repackage</goal>-->
-                  <!--              </goals>-->
-                  <!--              &lt;!&ndash; 分离出代码包-->
-                  <!--              <configuration>-->
-                  <!--                  <classifier>exec</classifier>-->
-                  <!--              </configuration>-->
-                  <!--               &ndash;&gt;-->
-                  <!--            </execution>-->
-              </executions>
-          </plugin>
+<!--          </configuration>-->
+          <executions>
+<!--            <execution>-->
+<!--              <goals>-->
+<!--                <goal>repackage</goal>-->
+<!--              </goals>-->
+<!--              &lt;!&ndash; 分离出代码包-->
+<!--              <configuration>-->
+<!--                  <classifier>exec</classifier>-->
+<!--              </configuration>-->
+<!--               &ndash;&gt;-->
+<!--            </execution>-->
+          </executions>
+        </plugin>
       </plugins>
 
   </build>
-
-
 </project>
