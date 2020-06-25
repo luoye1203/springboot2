@@ -1,9 +1,10 @@
 package com.lht.test;
 
 import com.alibaba.fastjson.JSON;
-import com.lht.bService.UserService;
+import com.lht.bService.VoteRecordService;
 import com.lht.dModel.JdbcTaskModel;
 import com.lht.dModel.User;
+import com.lht.dModel.VoteRecordDto;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -29,15 +30,18 @@ import java.util.List;
 public class ApplicationTests {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
-    private UserService userService;
+    private VoteRecordService voteRecordService;
 
     // 实现
     @Test
     public void test1() {
-        logger.info("---------------dao start---------------");
-        User user=this.userService.getUserByAccountAndPassword("lht","77ed66e2fa056ebe82d54b84ae24c451");
-        logger.info(user.toString());
-        logger.info("---------------dao start**********---------------");
+        List<VoteRecordDto> data=this.voteRecordService.getAll();
+        data.forEach(d->{logger.info(d.toString());});
+    }
+
+    @Test
+    public void test2(){
+        logger.info(this.voteRecordService.deleteById()+"");
     }
 
 

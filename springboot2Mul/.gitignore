@@ -25,3 +25,10 @@ myquartz/myquartz.iml
 
 myquartz/target/
 
+/rabbitmq_jar_web/rabbitmq_jar_web.iml
+/rabbitmq_jar_web/target/
+rabbitmq_jar_web/rabbitmq_jar_web.iml
+rabbitmq_jar_web/target/
+/redis_cache_jar_web/jar_web.iml
+/redis_cache_jar_web/target/
+/redis_cache_jar_web/redis_cache_jar_web.iml

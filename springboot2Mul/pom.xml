@@ -19,6 +19,7 @@
         <module>noWeb</module>
         <module>myquartz</module>
         <module>rabbitmq_jar_web</module>
+        <module>redis_cache_jar_web</module>
     </modules>
 
     <parent>

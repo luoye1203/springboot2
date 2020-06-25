@@ -10,11 +10,11 @@
   </parent>
 
   <groupId>com.lht</groupId>
-  <artifactId>jar_web</artifactId>
+  <artifactId>redis_cache_jar_web</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>jar_web</name>
+  <name>redis_cache_jar_web</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +52,10 @@
       <artifactId>mybatis-spring-boot-starter</artifactId>
       <version>2.0.0</version>
     </dependency>
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-redis</artifactId>
+      </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-logging</artifactId>
@@ -61,22 +65,9 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
-      <!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
-      <dependency>
-          <groupId>javax.persistence</groupId>
-          <artifactId>persistence-api</artifactId>
-          <version>1.0</version>
-      </dependency>
-
-      <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
-      <dependency>
-          <groupId>tk.mybatis</groupId>
-          <artifactId>mapper</artifactId>
-          <version>4.1.5</version>
-      </dependency>
 
 
-      <dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
@@ -91,7 +82,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.15</version>
+        <version>8.0.19</version>
     </dependency>
     <dependency>
       <groupId>io.springfox</groupId>
@@ -124,7 +115,7 @@
 
 
   <build>
-    <finalName>jar_web</finalName>
+    <finalName>redis_cache_jar_web</finalName>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

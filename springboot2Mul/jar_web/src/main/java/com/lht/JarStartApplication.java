@@ -19,6 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@EnableCaching
 @ServletComponentScan //使@WebFilter 起作用
 @MapperScan("com.lht.cDao")
+@tk.mybatis.spring.annotation.MapperScan("com.lht.mapper")
 public class JarStartApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
