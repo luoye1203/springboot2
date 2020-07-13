@@ -27,6 +27,11 @@
 <!--      <groupId>org.springframework.boot</groupId>-->
 <!--      <artifactId>spring-boot-starter-data-redis</artifactId>-->
 <!--    </dependency>-->
+      <dependency>
+          <groupId>redis.clients</groupId>
+          <artifactId>jedis</artifactId>
+          <version>3.0.1</version>
+      </dependency>
     <dependency>
       <groupId>com.lht</groupId>
       <artifactId>app_config</artifactId>
